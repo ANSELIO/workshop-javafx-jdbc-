@@ -19,13 +19,14 @@ import model.services.DepartmentService;
 
 public class DepartmentListController implements Initializable  {
 
+	
 	private DepartmentService service;
 	
 	@FXML
 	private TableView<Department> tableViwDepartement;
 	
 	@FXML
-	private TableColumn<Department, String> tableColumnId;
+	private TableColumn<Department, Integer> tableColumnId;
 	
 	@FXML
 	private TableColumn<Department, String> tableColumnName;
@@ -60,8 +61,9 @@ public class DepartmentListController implements Initializable  {
 		if (service == null) {
 			throw new IllegalStateException ("Service was null");
 		}
-		List<Department> list = service.findll();
+		List<Department> list = service.findAll();
 		obsList = FXCollections.observableArrayList(list);
 		tableViwDepartement.setItems(obsList);
 	}
 }
+
